@@ -4,8 +4,11 @@ import './style.css';
 import { initializeApp } from 'firebase/app';
 
 // Add the Firebase products and methods that you want to use
-import {} from 'firebase/auth';
+import { getAuth, EmailAuthProvider } from 'firebase/auth';
 import {} from 'firebase/firestore';
+
+initializeApp(firebaseConfig);
+auth = getAuth();
 
 import * as firebaseui from 'firebaseui';
 
@@ -47,18 +50,18 @@ async function main() {
     }
   };
 
-  // const ui = new firebaseui.auth.AuthUI(auth);
+  const ui = new firebaseui.auth.AuthUI(auth);
 }
 main();
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDj4RNohGUdcRR1slvgZdUVNbKJ2odJkNc",
-  authDomain: "fir-web-codelab-398dd.firebaseapp.com",
-  projectId: "fir-web-codelab-398dd",
-  storageBucket: "fir-web-codelab-398dd.appspot.com",
-  messagingSenderId: "390940575886",
-  appId: "1:390940575886:web:5fc4e675e08423b59a21df"
+  apiKey: 'AIzaSyDj4RNohGUdcRR1slvgZdUVNbKJ2odJkNc',
+  authDomain: 'fir-web-codelab-398dd.firebaseapp.com',
+  projectId: 'fir-web-codelab-398dd',
+  storageBucket: 'fir-web-codelab-398dd.appspot.com',
+  messagingSenderId: '390940575886',
+  appId: '1:390940575886:web:5fc4e675e08423b59a21df'
 };
 
 // Initialize Firebase
