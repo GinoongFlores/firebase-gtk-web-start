@@ -7,9 +7,6 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, EmailAuthProvider } from 'firebase/auth';
 import {} from 'firebase/firestore';
 
-initializeApp(firebaseConfig);
-auth = getAuth();
-
 import * as firebaseui from 'firebaseui';
 
 // Document elements
@@ -51,6 +48,12 @@ async function main() {
   };
 
   const ui = new firebaseui.auth.AuthUI(auth);
+
+  // Listen to RVSP button clicks
+
+  startRsvpButton.addEventListener('click', () => {
+    ui.start('#firebaseui-auth-container', uiConfig);
+  });
 }
 main();
 
@@ -63,6 +66,9 @@ const firebaseConfig = {
   messagingSenderId: '390940575886',
   appId: '1:390940575886:web:5fc4e675e08423b59a21df'
 };
+
+initializeApp(firebaseConfig);
+auth = getAuth();
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
