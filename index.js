@@ -50,7 +50,6 @@ async function main() {
   const ui = new firebaseui.auth.AuthUI(auth);
 
   // Listen to RVSP button clicks
-
   startRsvpButton.addEventListener('click', () => {
     ui.start('#firebaseui-auth-container', uiConfig);
   });
