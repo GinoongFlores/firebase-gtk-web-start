@@ -26,7 +26,6 @@ let guestbookListener = null;
 let db, auth;
 
 async function main() {
-  // initializeApp(firebaseConfig);
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: 'AIzaSyDj4RNohGUdcRR1slvgZdUVNbKJ2odJkNc',
