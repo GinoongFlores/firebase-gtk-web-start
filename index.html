@@ -5,15 +5,11 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:300,400,700&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div id="app">
-
-    <!-- <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/firestore.png?alt=media&token=56d039dc-4a6c-477b-a153-a4bb8234646f" /> -->
-    <!-- <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/hosting.png?alt=media&token=57c8adb6-08c4-43f7-9395-4c299896a36c" /> -->
     <img src="https://firebasestorage.googleapis.com/v0/b/fir-images-a61c9.appspot.com/o/codelab.png?alt=media&token=f45f808c-ce40-4b34-944c-8d8fac00e13d" />
 
     <section id="event-details-container">
@@ -21,8 +17,6 @@
 
       <p><i class="material-icons">calendar_today</i> October 30</p>
       <p><i class="material-icons">location_city</i> San Francisco</p>
-
-      <!-- ADDED RVSP BUTTON -->
       <button id="startRsvp">RSVP</button>
 
     </section>
@@ -41,23 +35,3 @@
 
   </div>
 </body>
-
-<script type="module">
-  // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDj4RNohGUdcRR1slvgZdUVNbKJ2odJkNc",
-  authDomain: "fir-web-codelab-398dd.firebaseapp.com",
-  projectId: "fir-web-codelab-398dd",
-  storageBucket: "fir-web-codelab-398dd.appspot.com",
-  messagingSenderId: "390940575886",
-  appId: "1:390940575886:web:5fc4e675e08423b59a21df"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-</script>

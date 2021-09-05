@@ -4,7 +4,13 @@ import './style.css';
 import { initializeApp } from 'firebase/app';
 
 // Add the Firebase products and methods that you want to use
-import { getAuth, EmailAuthProvider } from 'firebase/auth';
+import {
+  getAuth,
+  EmailAuthProvider,
+  signOut,
+  onAuthStateChanged
+} from 'firebase/auth';
+
 import {} from 'firebase/firestore';
 
 import * as firebaseui from 'firebaseui';
@@ -24,8 +30,9 @@ let rsvpListener = null;
 let guestbookListener = null;
 
 let db, auth;
-
 async function main() {
+  // Add Firebase project configuration object here
+
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: 'AIzaSyDj4RNohGUdcRR1slvgZdUVNbKJ2odJkNc',
@@ -36,10 +43,21 @@ async function main() {
     appId: '1:390940575886:web:5fc4e675e08423b59a21df'
   };
   // Initialize Firebase
-  initializeApp(firebaseConfig);
-  auth = getAuth();
 
-  // const app = initializeApp(firebaseConfig);
+  // Make sure Firebase is initilized
+  try {
+    if (firebaseConfig && firebaseConfig.apiKey) {
+      initializeApp(firebaseConfig);
+    }
+    auth = getAuth();
+  } catch (e) {
+    console.log('error:', e);
+    document.getElementById('app').innerHTML =
+      '<h1>Welcome to the Codelab! Add your Firebase config object to <pre>/index.js</pre> and refresh to get started</h1>';
+    throw new Error(
+      'Welcome to the Codelab! Add your Firebase config object from the Firebase Console to `/index.js` and refresh to get started'
+    );
+  }
 
   // FirebaseUI config
   const uiConfig = {
@@ -57,11 +75,27 @@ async function main() {
     }
   };
 
-  const ui = new firebaseui.auth.AuthUI(auth);
+  // Initialize the FirebaseUI widget using Firebase
+  const ui = new firebaseui.auth.AuthUI(getAuth());
 
-  // Listen to RVSP button clicks
+  // Listen to RSVP button clicks
   startRsvpButton.addEventListener('click', () => {
-    ui.start('#firebaseui-auth-container', uiConfig);
+    if (auth.currentUser) {
+      // User is signed in; allows user to sign out
+      signOut(auth);
+    } else {
+      // No user is signed in; allows user to sign in
+      ui.start('#firebaseui-auth-container', uiConfig);
+    }
+  });
+
+  // Listen to the current Auth state
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      startRsvpButton.textContent = 'LOGOUT';
+    } else {
+      startRsvpButton.textContent = 'RSVP';
+    }
   });
 }
 main();
